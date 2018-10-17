@@ -1,0 +1,16 @@
+version: "3"
+services:
+  app:
+    build: .
+    image: "mobile_health_test:latest"
+    links:
+      - redis
+    depends_on:
+      - redis
+    ports:
+      - "5000:5000"
+    environment:
+      REDIS_HOST: redis
+  redis:
+    image:  "redis:alphine"
+
